@@ -1,47 +1,21 @@
-class Person {
-  Person({
-    this.id,
-    this.name,
-    this.status,
-    this.species,
-    this.type,
-    this.gender,
-    this.image,
-    this.episode,
-    this.url,
-    this.created,
-  });
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'person.freezed.dart';
+part 'person.g.dart';
 
-  final DateTime? created;
-  final List<String>? episode;
-  final String? gender;
-  final int? id;
-  final String? image;
-  final String? name;
-  final String? species;
-  final String? status;
-  final String? type;
-  final String? url;
+@freezed
+class Person with _$Person {
+  const factory Person({
+    DateTime? created,
+    List<String>? episode,
+    String? gender,
+    int? id,
+    String? image,
+    String? name,
+    String? species,
+    String? status,
+    String? type,
+    String? url,
+  }) = _Person;
 
-  factory Person.fromJson(Map<String, dynamic>? json) {
-    if (json == null) return Person();
-    List<String>? episode = [];
-    if (json["episode"] is List) {
-      for (var item in json["episode"]) {
-        episode.add(item);
-      }
-    }
-    return Person(
-      id: json["id"],
-      name: json["name"],
-      status: json["status"],
-      species: json["species"],
-      type: json["type"],
-      gender: json["gender"],
-      image: json["image"],
-      episode: episode,
-      url: json["url"],
-      created: json["created"] == null ? null : DateTime.parse(json["created"]),
-    );
-  }
+  factory Person.fromJson(Map<String, Object?> json) => _$PersonFromJson(json);
 }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:training/widgets/user_avatar.dart';
 
@@ -40,7 +39,7 @@ class PersonListTile extends StatelessWidget {
                   Icon(person.gender == "Male" ? Icons.male : Icons.female),
                   Expanded(
                     child: Text(
-                      '${person.gender ?? "No data"}',
+                      person.gender ?? "No data",
                       style: const TextStyle(
                         color: AppColors.neutral1,
                       ),
